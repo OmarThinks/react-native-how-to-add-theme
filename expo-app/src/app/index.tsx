@@ -28,12 +28,17 @@ const index = () => {
   const colors = theme === ThemeEnum.Dark ? darkColors : lightColors;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: colors.bg }}
+      edges={["top", "right", "left"]}
+    >
       <StatusBar
         barStyle={theme === ThemeEnum.Dark ? "light-content" : "dark-content"}
       />
       <View style={{ flex: 1, backgroundColor: colors.bg }}>
-        <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>index</Text>
+        <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
+          Step 1
+        </Text>
       </View>
 
       <Button

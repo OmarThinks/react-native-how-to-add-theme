@@ -14,6 +14,14 @@ export default function AppTabs() {
       labelStyle={{ selected: { color: colors.text } }}
     >
       <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Example</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={require("@/assets/images/tabIcons/explore.png")}
+          renderingMode="template"
+        />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="level1">
         <NativeTabs.Trigger.Label>Level 1</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
@@ -33,14 +41,6 @@ export default function AppTabs() {
         <NativeTabs.Trigger.Label>Level 3</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
-          renderingMode="template"
-        />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="example">
-        <NativeTabs.Trigger.Label>Example</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require("@/assets/images/tabIcons/explore.png")}
           renderingMode="template"
         />
       </NativeTabs.Trigger>

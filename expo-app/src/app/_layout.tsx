@@ -1,21 +1,32 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from "expo-router";
-import { useColorScheme } from "react-native";
+import { StatusBar, useColorScheme } from "react-native";
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import AppTabs from "@/components/app-tabs";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
+import { Provider, useSelector } from "react-redux";
+import { RootState, store } from "@/redux/store";
+import { ThemeEnum } from "@/redux/themeSlice/themeSlice";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
   return (
     <Provider store={store}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <AnimatedSplashOverlay />
-        <AppTabs />
-      </ThemeProvider>
+      <AppInsideRedux />
     </Provider>
   );
 }
+
+const AppInsideRedux = () => {
+  const theme = useSelector<RootState>((state) => state.themeSlice.value);
+
+  return (
+    <ThemeProvider value={theme === ThemeEnum.Dark ? DarkTheme : DefaultTheme}>
+      <StatusBar
+        barStyle={theme === ThemeEnum.Dark ? "light-content" : "dark-content"}
+      />
+      <AnimatedSplashOverlay />
+      <AppTabs />
+    </ThemeProvider>
+  );
+};
 
 /*
       <StatusBar

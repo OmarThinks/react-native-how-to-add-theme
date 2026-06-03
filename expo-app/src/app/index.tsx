@@ -1,60 +1,29 @@
-import { View, Text, Button, StatusBar } from "react-native";
-import React, { useState } from "react";
+import { useColors } from "@/redux/themeSlice/useColors";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type ThemeColors = {
-  text: string;
-  bg: string;
-};
-
-const lightColors: ThemeColors = {
-  text: "black",
-  bg: "white",
-};
-
-const darkColors: ThemeColors = {
-  text: "white",
-  bg: "black",
-};
-
-enum ThemeEnum {
-  Light = "light",
-  Dark = "dark",
-}
-
-const Level1 = () => {
-  const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Dark);
-
-  const colors = theme === ThemeEnum.Dark ? darkColors : lightColors;
+const index = () => {
+  const colors = useColors();
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: colors.bg }}
-      edges={["top", "right", "left"]}
+      style={{ backgroundColor: colors.bg, flex: 1, alignSelf: "stretch" }}
     >
-      <StatusBar
-        barStyle={theme === ThemeEnum.Dark ? "light-content" : "dark-content"}
-      />
-      <View style={{ flex: 1, backgroundColor: colors.bg }}>
-        <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
-          Step 1
+      <View
+        style={{
+          backgroundColor: colors.bg,
+          flex: 1,
+          alignSelf: "stretch",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ color: colors.text, fontSize: 50, fontWeight: "bold" }}>
+          Example
         </Text>
       </View>
-
-      <Button
-        title="Light Theme"
-        onPress={() => {
-          setTheme(ThemeEnum.Light);
-        }}
-      />
-      <Button
-        title="Dark Theme"
-        onPress={() => {
-          setTheme(ThemeEnum.Dark);
-        }}
-      />
     </SafeAreaView>
   );
 };
 
-export default Level1;
+export default index;

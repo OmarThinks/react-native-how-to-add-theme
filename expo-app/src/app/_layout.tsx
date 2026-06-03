@@ -2,9 +2,13 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from "expo-router";
 import { StatusBar, useColorScheme } from "react-native";
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import AppTabs from "@/components/app-tabs";
-import { Provider, useSelector } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { RootState, store } from "@/redux/store";
 import { ThemeEnum } from "@/redux/themeSlice/themeSlice";
+import { useEffect, useEffectEvent } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StorageKeysEnum } from "@/storage/StorageKeysEnum";
+import { updateTheme } from "@/redux/themeSlice/themeSlice";
 
 export default function TabLayout() {
   return (
@@ -16,6 +20,19 @@ export default function TabLayout() {
 
 const AppInsideRedux = () => {
   const theme = useSelector<RootState>((state) => state.themeSlice.value);
+  const dispatch = useDispatch();
+  const initializeTheme = useEffectEvent(async () => {
+    const theme = (await AsyncStorage.getItem(
+      StorageKeysEnum.Theme,
+    )) as ThemeEnum | null;
+    if (theme) {
+      dispatch(updateTheme({ theme }));
+    }
+  });
+
+  useEffect(() => {
+    initializeTheme();
+  }, []);
 
   return (
     <ThemeProvider value={theme === ThemeEnum.Dark ? DarkTheme : DefaultTheme}>

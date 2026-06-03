@@ -32,9 +32,9 @@ const Level1 = () => {
       style={{ flex: 1, backgroundColor: colors.bg }}
       edges={["top", "right", "left"]}
     >
-      <View style={{ flex: 1, backgroundColor: colors.bg }}>
+      <View style={{ flex: 1, backgroundColor: colors.bg, padding: 16 }}>
         <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
-          Step 1
+          Level 1
         </Text>
       </View>
 

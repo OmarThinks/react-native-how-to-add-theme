@@ -16,6 +16,7 @@ const index = () => {
           alignSelf: "stretch",
           justifyContent: "center",
           alignItems: "center",
+          padding: 16,
         }}
       >
         <Text style={{ color: colors.text, fontSize: 50, fontWeight: "bold" }}>

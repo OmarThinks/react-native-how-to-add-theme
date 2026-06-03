@@ -1,5 +1,6 @@
+import { Host, Switch } from "@expo/ui";
 import { useState } from "react";
-import { Button, StatusBar, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type ThemeColors = {
@@ -32,24 +33,39 @@ const Level1 = () => {
       style={{ flex: 1, backgroundColor: colors.bg }}
       edges={["top", "right", "left"]}
     >
-      <View style={{ flex: 1, backgroundColor: colors.bg, padding: 16 }}>
-        <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
-          Level 1
-        </Text>
-      </View>
+      <View style={{ alignSelf: "stretch", flex: 1, paddingHorizontal: 16 }}>
+        <View style={{ flex: 1, backgroundColor: colors.bg }}>
+          <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
+            Level 1
+          </Text>
+        </View>
 
-      <Button
-        title="Light Theme"
-        onPress={() => {
-          setTheme(ThemeEnum.Light);
-        }}
-      />
-      <Button
-        title="Dark Theme"
-        onPress={() => {
-          setTheme(ThemeEnum.Dark);
-        }}
-      />
+        <View
+          style={{
+            //justifyContent: "space-between",
+            alignItems: "center",
+            alignSelf: "stretch",
+            flexDirection: "row",
+            gap: 16,
+          }}
+        >
+          <Host matchContents>
+            <Switch
+              value={theme === ThemeEnum.Dark}
+              onValueChange={() => {
+                setTheme((oldTheme) =>
+                  oldTheme === ThemeEnum.Dark
+                    ? ThemeEnum.Light
+                    : ThemeEnum.Dark,
+                );
+              }}
+            />
+          </Host>
+          <Text style={{ color: colors.text, fontSize: 44 }}>
+            {theme === ThemeEnum.Light ? "Light Theme" : "Dark Theme"}
+          </Text>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

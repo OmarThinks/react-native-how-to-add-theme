@@ -1,4 +1,4 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StatusBar } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -29,6 +29,9 @@ const index = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
+      <StatusBar
+        barStyle={theme === ThemeEnum.Dark ? "light-content" : "dark-content"}
+      />
       <View style={{ flex: 1, backgroundColor: colors.bg }}>
         <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>index</Text>
       </View>

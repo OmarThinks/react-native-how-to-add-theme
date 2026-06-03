@@ -26,7 +26,7 @@ const AppInsideRedux = () => {
       StorageKeysEnum.Theme,
     )) as ThemeEnum | null;
     if (theme) {
-      dispatch(updateTheme({ theme }));
+      dispatch(updateTheme(theme));
     }
   });
 

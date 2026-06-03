@@ -23,13 +23,13 @@ const Level2 = () => {
       <Button
         title="Light Theme"
         onPress={() => {
-          dispatch(updateTheme({ theme: ThemeEnum.Light }));
+          dispatch(updateTheme(ThemeEnum.Light));
         }}
       />
       <Button
         title="Dark Theme"
         onPress={() => {
-          dispatch(updateTheme({ theme: ThemeEnum.Dark }));
+          dispatch(updateTheme(ThemeEnum.Dark));
         }}
       />
     </SafeAreaView>

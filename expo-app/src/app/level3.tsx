@@ -1,4 +1,7 @@
-import { ThemeEnum, updateTheme } from "@/redux/themeSlice/themeSlice";
+import {
+  ThemeEnum,
+  updateThemeAndPersist,
+} from "@/redux/themeSlice/themeSlice";
 import { useColors } from "@/redux/themeSlice/useColors";
 import { Button, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -23,13 +26,13 @@ const Level3 = () => {
       <Button
         title="Light Theme"
         onPress={() => {
-          dispatch(updateTheme({ theme: ThemeEnum.Light, persist: true }));
+          dispatch(updateThemeAndPersist(ThemeEnum.Light));
         }}
       />
       <Button
         title="Dark Theme"
         onPress={() => {
-          dispatch(updateTheme({ theme: ThemeEnum.Dark, persist: true }));
+          dispatch(updateThemeAndPersist(ThemeEnum.Dark));
         }}
       />
     </SafeAreaView>

@@ -20,20 +20,19 @@ export const themeSlice = createSlice({
   name: "themeSlice",
   initialState,
   reducers: {
-    updateTheme: (
-      state,
-      action: PayloadAction<{ theme: ThemeEnum; persist?: boolean }>,
-    ) => {
-      const { theme, persist } = action.payload;
+    updateTheme: (state, action: PayloadAction<ThemeEnum>) => {
+      const theme = action.payload;
       state.value = theme;
-      if (persist) {
-        AsyncStorage.setItem(StorageKeysEnum.Theme, theme);
-      }
+    },
+    updateThemeAndPersist: (state, action: PayloadAction<ThemeEnum>) => {
+      const theme = action.payload;
+      state.value = theme;
+      AsyncStorage.setItem(StorageKeysEnum.Theme, theme);
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateTheme } = themeSlice.actions;
+export const { updateTheme, updateThemeAndPersist } = themeSlice.actions;
 export { ThemeEnum };
 export default themeSlice.reducer;

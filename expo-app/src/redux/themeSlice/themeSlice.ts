@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StorageKeysEnum } from "@/storage/StorageKeysEnum";
 
 enum ThemeEnum {
   Light = "light",
@@ -22,7 +24,11 @@ export const themeSlice = createSlice({
       state,
       action: PayloadAction<{ theme: ThemeEnum; persist?: boolean }>,
     ) => {
-      state.value = action.payload.theme;
+      const { theme, persist } = action.payload;
+      state.value = theme;
+      if (persist) {
+        AsyncStorage.setItem(StorageKeysEnum.Theme, theme);
+      }
     },
   },
 });

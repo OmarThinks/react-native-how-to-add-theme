@@ -33,7 +33,7 @@ const Level1 = () => {
       style={{ flex: 1, backgroundColor: colors.bg }}
       edges={["top", "right", "left"]}
     >
-      <View style={{ alignSelf: "stretch", flex: 1, paddingHorizontal: 16 }}>
+      <View style={{ alignSelf: "stretch", flex: 1, padding: 16 }}>
         <View style={{ flex: 1, backgroundColor: colors.bg }}>
           <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
             Level 1
@@ -42,7 +42,6 @@ const Level1 = () => {
 
         <View
           style={{
-            //justifyContent: "space-between",
             alignItems: "center",
             alignSelf: "stretch",
             flexDirection: "row",
@@ -52,12 +51,8 @@ const Level1 = () => {
           <Host matchContents>
             <Switch
               value={theme === ThemeEnum.Dark}
-              onValueChange={() => {
-                setTheme((oldTheme) =>
-                  oldTheme === ThemeEnum.Dark
-                    ? ThemeEnum.Light
-                    : ThemeEnum.Dark,
-                );
+              onValueChange={(newValue) => {
+                setTheme(newValue === true ? ThemeEnum.Dark : ThemeEnum.Light);
               }}
             />
           </Host>

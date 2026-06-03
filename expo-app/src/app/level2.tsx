@@ -1,37 +1,52 @@
+import { RootState } from "@/redux/store";
 import { ThemeEnum, updateTheme } from "@/redux/themeSlice/themeSlice";
 import { useColors } from "@/redux/themeSlice/useColors";
+import { Host, Switch } from "@expo/ui";
 import { Button, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Level2 = () => {
   const colors = useColors();
 
   const dispatch = useDispatch();
+  const theme = useSelector<RootState>((state) => state.themeSlice.value);
 
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: colors.bg }}
       edges={["top", "right", "left"]}
     >
-      <View style={{ flex: 1, backgroundColor: colors.bg, padding: 16 }}>
-        <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
-          Level 2
-        </Text>
-      </View>
+      <View style={{ alignSelf: "stretch", flex: 1, padding: 16 }}>
+        <View style={{ flex: 1, backgroundColor: colors.bg }}>
+          <Text style={{ flex: 1, color: colors.text, fontSize: 40 }}>
+            Level 2
+          </Text>
+        </View>
 
-      <Button
-        title="Light Theme"
-        onPress={() => {
-          dispatch(updateTheme(ThemeEnum.Light));
-        }}
-      />
-      <Button
-        title="Dark Theme"
-        onPress={() => {
-          dispatch(updateTheme(ThemeEnum.Dark));
-        }}
-      />
+        <View
+          style={{
+            alignItems: "center",
+            alignSelf: "stretch",
+            flexDirection: "row",
+            gap: 16,
+          }}
+        >
+          <Host matchContents>
+            <Switch
+              value={theme === ThemeEnum.Dark}
+              onValueChange={(newValue) => {
+                dispatch(
+                  updateTheme(newValue ? ThemeEnum.Dark : ThemeEnum.Light),
+                );
+              }}
+            />
+          </Host>
+          <Text style={{ color: colors.text, fontSize: 44 }}>
+            {theme === ThemeEnum.Light ? "Light Theme" : "Dark Theme"}
+          </Text>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

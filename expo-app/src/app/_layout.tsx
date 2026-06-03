@@ -16,3 +16,10 @@ export default function TabLayout() {
     </Provider>
   );
 }
+
+/*
+      <StatusBar
+        barStyle={theme === ThemeEnum.Dark ? "light-content" : "dark-content"}
+      />
+
+*/

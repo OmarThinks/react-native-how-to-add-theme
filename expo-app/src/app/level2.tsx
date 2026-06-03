@@ -1,31 +1,16 @@
-import { View, Text, Button, StatusBar } from "react-native";
-import React, { useState } from "react";
+import { RootState } from "@/redux/store";
+import { ThemeEnum, updateTheme } from "@/redux/themeSlice/themeSlice";
+import { useColors } from "@/redux/themeSlice/useColors";
+import { Button, StatusBar, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 
-type ThemeColors = {
-  text: string;
-  bg: string;
-};
+const Level2 = () => {
+  const colors = useColors();
 
-const lightColors: ThemeColors = {
-  text: "black",
-  bg: "white",
-};
+  const dispatch = useDispatch();
 
-const darkColors: ThemeColors = {
-  text: "white",
-  bg: "black",
-};
-
-enum ThemeEnum {
-  Light = "light",
-  Dark = "dark",
-}
-
-const Level1 = () => {
-  const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Dark);
-
-  const colors = theme === ThemeEnum.Dark ? darkColors : lightColors;
+  const theme = useSelector<RootState>((state) => state.themeSlice.value);
 
   return (
     <SafeAreaView
@@ -44,17 +29,17 @@ const Level1 = () => {
       <Button
         title="Light Theme"
         onPress={() => {
-          setTheme(ThemeEnum.Light);
+          dispatch(updateTheme({ theme: ThemeEnum.Light }));
         }}
       />
       <Button
         title="Dark Theme"
         onPress={() => {
-          setTheme(ThemeEnum.Dark);
+          dispatch(updateTheme({ theme: ThemeEnum.Dark }));
         }}
       />
     </SafeAreaView>
   );
 };
 
-export default Level1;
+export default Level2;

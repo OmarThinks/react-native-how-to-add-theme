@@ -14,23 +14,23 @@ export default function AppTabs() {
       labelStyle={{ selected: { color: colors.text } }}
     >
       <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Step 1</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>Level 1</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="step2">
-        <NativeTabs.Trigger.Label>Step 2</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="level2">
+        <NativeTabs.Trigger.Label>Level 2</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="step3">
-        <NativeTabs.Trigger.Label>Step 3</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="level3">
+        <NativeTabs.Trigger.Label>Level 3</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"

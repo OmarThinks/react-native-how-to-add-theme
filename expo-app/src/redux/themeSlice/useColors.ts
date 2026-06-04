@@ -1,21 +1,6 @@
+import { darkColors, lightColors, ThemeEnum } from "@/constants/colors";
 import { useSelector } from "react-redux";
-import { RootState, store } from "../store";
-import { ThemeEnum } from "./themeSlice";
-
-type ThemeColors = {
-  text: string;
-  bg: string;
-};
-
-const lightColors: ThemeColors = {
-  text: "black",
-  bg: "white",
-};
-
-const darkColors: ThemeColors = {
-  text: "white",
-  bg: "black",
-};
+import { RootState } from "../store";
 
 const useColors = () => {
   const theme = useSelector<RootState>((state) => state.themeSlice.value);

@@ -4,11 +4,11 @@ import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import AppTabs from "@/components/app-tabs";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { RootState, store } from "@/redux/store";
-import { ThemeEnum } from "@/redux/themeSlice/themeSlice";
 import { useEffect, useEffectEvent } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StorageKeysEnum } from "@/storage/StorageKeysEnum";
 import { updateTheme } from "@/redux/themeSlice/themeSlice";
+import { ThemeEnum } from "@/constants/colors";
 
 export default function TabLayout() {
   return (

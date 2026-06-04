@@ -1,8 +1,6 @@
+import { ThemeEnum } from "@/constants/colors";
 import { RootState } from "@/redux/store";
-import {
-  ThemeEnum,
-  updateThemeAndPersist,
-} from "@/redux/themeSlice/themeSlice";
+import { updateThemeAndPersist } from "@/redux/themeSlice/themeSlice";
 import { useColors } from "@/redux/themeSlice/useColors";
 import { Host, Switch } from "@expo/ui";
 import { Text, View } from "react-native";

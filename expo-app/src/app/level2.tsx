@@ -1,8 +1,9 @@
+import { ThemeEnum } from "@/constants/colors";
 import { RootState } from "@/redux/store";
-import { ThemeEnum, updateTheme } from "@/redux/themeSlice/themeSlice";
+import { updateTheme } from "@/redux/themeSlice/themeSlice";
 import { useColors } from "@/redux/themeSlice/useColors";
 import { Host, Switch } from "@expo/ui";
-import { Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 

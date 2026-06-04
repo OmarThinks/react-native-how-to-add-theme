@@ -1,12 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ThemeEnum } from "@/constants/colors";
 import { StorageKeysEnum } from "@/storage/StorageKeysEnum";
-
-enum ThemeEnum {
-  Light = "light",
-  Dark = "dark",
-}
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface ThemeState {
   value: ThemeEnum;

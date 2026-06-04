@@ -1,27 +1,8 @@
+import { darkColors, lightColors, ThemeEnum } from "@/constants/colors";
 import { Host, Switch } from "@expo/ui";
 import { useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-type ThemeColors = {
-  text: string;
-  bg: string;
-};
-
-const lightColors: ThemeColors = {
-  text: "black",
-  bg: "white",
-};
-
-const darkColors: ThemeColors = {
-  text: "white",
-  bg: "black",
-};
-
-enum ThemeEnum {
-  Light = "light",
-  Dark = "dark",
-}
 
 const Level1 = () => {
   const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Dark);
